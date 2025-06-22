@@ -42,8 +42,8 @@ export default function VigilantUpdate() {
         if (params.id) {
             updateProfile(params.id, data);
             navigate("/profileVigilant");
-            handleReload();
         }
+        handleReload();
     });
 
     return (
