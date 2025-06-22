@@ -43,7 +43,6 @@ export default function VigilantUpdate() {
             updateProfile(params.id, data);
             navigate("/profileVigilant");
         }
-        handleReload();
     });
 
     return (
