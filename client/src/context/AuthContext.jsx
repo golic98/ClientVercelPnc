@@ -66,8 +66,8 @@ export const AuthProvider = ({ children }) => {
   const createUser = async (userData) => {
     try {
       const res = await registerRequestByAdmin(userData);
-      setUser(res.data);
-      setIsAuthenticate(true);
+      const newUser = res.data;
+      setGetAdminUsers(prev => [...prev, newUser]);
     } catch (error) {
       setErrors(error.response?.data || [error.message]);
     }
