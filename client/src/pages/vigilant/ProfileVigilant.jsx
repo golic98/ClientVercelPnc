@@ -4,7 +4,6 @@ import assets from "../../../src/assets";
 import "./ProfileVigilant.css";
 
 export default function ProfileVigilant() {
-    
     const { user } = useAuth();
 
     return (

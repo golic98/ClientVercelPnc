@@ -8,9 +8,18 @@ import { useEffect } from "react";
 import "./TaskCard.css";
 
 function TaskCardAdmin({ task }) {
-    const { setValue } = useForm();
+    const { setValue, handleSubmit } = useForm();
     const { oneTask, deleteTask2 } = useTask();
     const params = useParams();
+
+    const handleReload = () => {
+        window.location.reload();
+    };
+
+    const onSubmit = async (values) => {
+        handleReload();
+        deleteTask2(task._id)
+    };
 
     useEffect(() => {
         async function loadTask() {
@@ -36,7 +45,7 @@ function TaskCardAdmin({ task }) {
                         <img src={task.image} width={200} height={200} />
                     </div>
                     <div>
-                        <button onClick={() => { deleteTask2(task._id)}}>
+                        <button onClick={handleSubmit(onSubmit)}>
                             <MdDelete />
                         </button>
                         <Link to={`/taskd/${task._id}`}>

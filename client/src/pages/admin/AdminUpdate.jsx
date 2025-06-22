@@ -7,7 +7,6 @@ import assets from "../../../src/assets";
 import "./AdminUpdate.css";
 
 export default function AdminUpdate() {
-
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
     const { getOneProfile, updateProfile } = useAuth();
     const params = useParams();
@@ -20,7 +19,7 @@ export default function AdminUpdate() {
                 setValue("name", profile.name);
                 setValue("username", profile.username);
                 setValue("email", profile.email);
-                setValue("password", profile.password);
+                setValue("password", "");
                 setValue("telephone", profile.telephone);
                 setValue("age", profile.age);
             }
@@ -33,9 +32,11 @@ export default function AdminUpdate() {
     };
 
     const onSubmit = handleSubmit((data) => {
-        if (data.password) {
+        if (data.password && data.password.trim() !== "") {
             const salt = bcrypt.genSaltSync(10);
             data.password = bcrypt.hashSync(data.password, salt);
+        } else {
+            delete data.password; 
         }
         if (params.id) {
             updateProfile(params.id, data);
@@ -87,7 +88,7 @@ export default function AdminUpdate() {
                         className=""
                         placeholder="Correo nuevo"
                     />
-                    <input type="password" {...register("password", { required: true })}
+                    <input type="password" {...register("password")}
                         className=""
                         placeholder="Contraseña nueva"
                     />

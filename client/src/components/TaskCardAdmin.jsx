@@ -9,12 +9,17 @@ import "./TaskCard.css";
 
 function TaskCardAdmin({ task }) {
 
-    const { setValue } = useForm();
+    const { setValue, handleSubmit } = useForm();
     const { oneTask, deleteTask, updateTask } = useTask();
     const params = useParams();
 
     const handleReload = () => {
         window.location.reload();
+    };
+
+    const onSubmit = async (values) => {
+        handleReload();
+        deleteTask(task._id)
     };
 
     useEffect(() => {
@@ -41,7 +46,7 @@ function TaskCardAdmin({ task }) {
                         <img src={task.image} width={200} height={200} />
                     </div>
                     <div>
-                        <button type="submit" onClick={() => { deleteTask(task._id)}}>
+                        <button type="submit" onClick={handleSubmit(onSubmit)}>
                             <MdDelete />
                         </button>
                         <Link to={`/task/${task._id}`}>

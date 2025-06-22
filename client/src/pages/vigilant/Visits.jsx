@@ -19,13 +19,15 @@ export default function Visits() {
         getVisitVigilant();
     }, []);
 
-    const onSubmit = handleSubmit((data) => {
-        createVisitVigilant(data);
-    });
-
     const handleReload = () => {
         window.location.reload();
     };
+
+    const onSubmit = handleSubmit((data) => {
+        createVisitVigilant(data);
+        handleReload();
+    });
+
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 

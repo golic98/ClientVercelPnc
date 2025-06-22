@@ -20,7 +20,7 @@ export default function VigilantUpdate() {
                 setValue("name", profile.name);
                 setValue("username", profile.username);
                 setValue("email", profile.email);
-                setValue("password", profile.password);
+                setValue("password", "");
                 setValue("telephone", profile.telephone);
                 setValue("age", profile.age);
             }
@@ -28,14 +28,21 @@ export default function VigilantUpdate() {
         loadProfile();
     }, []);
 
+    const handleReload = () => {
+        window.location.reload();
+    };
+
     const onSubmit = handleSubmit((data) => {
-        if (data.password) {
+        if (data.password && data.password.trim() !== "") {
             const salt = bcrypt.genSaltSync(10);
             data.password = bcrypt.hashSync(data.password, salt);
+        } else {
+            delete data.password; 
         }
         if (params.id) {
             updateProfile(params.id, data);
             navigate("/profileVigilant");
+            handleReload();
         }
     });
 
@@ -83,7 +90,7 @@ export default function VigilantUpdate() {
                     <input
                         id="password"
                         type="password"
-                        {...register("password", { required: true })}
+                        {...register("password")}
                         placeholder="Contraseña nueva"
                     />
                 </div>
