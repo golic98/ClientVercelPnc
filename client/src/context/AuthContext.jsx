@@ -42,9 +42,6 @@ export const AuthProvider = ({ children }) => {
   const signup = async (userData) => {
     try {
       const res = await registerRequest(userData);
-      persistToken(res.data.token);
-      setUser(res.data);
-      setIsAuthenticate(true);
     } catch (error) {
       const data = error.response?.data;
       setErrors(Array.isArray(data) ? data : [data.message || data]);
@@ -70,7 +67,6 @@ export const AuthProvider = ({ children }) => {
       setErrors(error.response?.data || [error.message]);
     }
   };
-  
 
   const logout = () => {
     Cookies.remove("token", { path: "/" });
