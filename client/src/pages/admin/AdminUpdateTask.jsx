@@ -23,10 +23,15 @@ export default function AdminUpdateTask() {
         loadTask();
     }, []);
 
+    const handleReload = () => {
+        window.location.reload();
+    };
+
     const onSubmit = handleSubmit((data) => {
         if (params.id) {
             updateTask(params.id, data);
             navigate("/admincreatereports");
+            handleReload();
         }
     });
 
@@ -36,7 +41,7 @@ export default function AdminUpdateTask() {
                 <nav className="user-home-navbar">
                     <div className="user-home-navbar-left">
                         <Link>
-                            <img src={assets.meg} alt="Logo MEG" className="user-home-logo" />
+                            
                         </Link>
                     </div>
                     <div className="user-home-navbar-right">
