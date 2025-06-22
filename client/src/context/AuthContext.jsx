@@ -8,7 +8,8 @@ import {
     getOneProfileUser,
     updateOneProfile,
     addPayVigilanceFromUser,
-    getAllUsersForUser
+    getAllUsersForUser,
+    createUserAsAdminRequest
 } from "../api/auth.js";
 import Cookies from "js-cookie";
 
@@ -42,6 +43,17 @@ export const AuthProvider = ({children}) => {
             setErrors(error.response.data);
         }
     }
+
+    const createUserAsAdmin = async (user) => {
+        try {
+            const res = await createUserAsAdminRequest(user);
+            return res.data;
+        } catch (error) {
+            console.error("Error al crear usuario como admin:", error.response?.data || error.message);
+            throw error;
+        }
+    };
+    
 
     const signin = async (user) => {
         try {
@@ -167,7 +179,8 @@ export const AuthProvider = ({children}) => {
             updateProfile,
             addPay, 
             users,
-            getAllUsers
+            getAllUsers,
+            createUserAsAdmin
             }}>
             {children}
         </AuthContext.Provider>
