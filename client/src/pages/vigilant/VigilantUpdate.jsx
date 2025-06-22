@@ -112,7 +112,7 @@ export default function VigilantUpdate() {
                         placeholder="Edad actualizada"
                     />
                 </div>
-                <button type="submit" className="submit-button">Actualizar datos</button>
+                <button type="submit">Actualizar datos</button>
             </form>
         </div>
     );
