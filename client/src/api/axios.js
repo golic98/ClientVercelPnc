@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "https://service-vercel-pnc.vercel.app/meg",
+    baseURL: import.meta.env.VITE_API_URL,
     withCredentials: true,
     timeout: 10000
 });
