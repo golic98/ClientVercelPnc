@@ -65,14 +65,12 @@ export const AuthProvider = ({ children }) => {
   
   const createUser = async (userData) => {
     try {
-      const res = await registerRequestByAdmin(userData);
-      persistToken(res.data.token);
-      setUser(res.data);
-      setIsAuthenticate(true);
+      await registerRequestByAdmin(userData);
     } catch (error) {
       setErrors(error.response?.data || [error.message]);
     }
-  };  
+  };
+  
 
   const logout = () => {
     Cookies.remove("token", { path: "/" });
