@@ -8,7 +8,8 @@ import {
     getOneProfileUser,
     updateOneProfile,
     addPayVigilanceFromUser,
-    getAllUsersForUser
+    getAllUsersForUser,
+    registerRequestByAdmin
 } from "../api/auth.js";
 import Cookies from "js-cookie";
 
@@ -32,6 +33,16 @@ export const AuthProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
     const [getAdminUsers, setGetAdminUsers] = useState([]);
     const [setPay] = useState(null);
+
+    const createUser = async (user) => {
+        try {
+            const res = await registerRequestByAdmin(user);
+            setUser(res.data);
+            setIsAuthenticate(true);
+        } catch (error) {
+            setErrors(error.response.data);
+        }
+    }
 
     const signup = async (user) => {
         try {
@@ -167,7 +178,8 @@ export const AuthProvider = ({children}) => {
             updateProfile,
             addPay, 
             users,
-            getAllUsers
+            getAllUsers,
+            createUser
             }}>
             {children}
         </AuthContext.Provider>
