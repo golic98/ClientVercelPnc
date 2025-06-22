@@ -45,7 +45,7 @@ function Register({ onClose }) {
                 };
 
                 signup(payload);
-                handleReload();
+                navigate("/");
             } catch (error) {
                 console.error("Error al crear cuenta:", error);
             }
