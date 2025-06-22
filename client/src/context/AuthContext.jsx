@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await loginRequest(credentials);
       persistToken(res.data.token);
-      setUser(res.data.user);
+      setUser(res.data);
       setIsAuthenticate(true);
     } catch (error) {
       const data = error.response?.data;
