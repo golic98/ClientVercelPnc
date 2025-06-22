@@ -28,6 +28,8 @@ export default function AdminCreateUser() {
 
     const onSubmit = handleSubmit(async (values) => {
         createUser(values);
+        navigate("/admin");
+        handleReload();
     });
 
     return (
