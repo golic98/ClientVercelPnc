@@ -20,6 +20,10 @@ function Register({ onClose }) {
         }
     }, [isAuthenticate, navigate]);
 
+    const handleReload = () => {
+        window.location.reload();
+    };
+
     const onSubmit = handleSubmit(async (values) => {
         if (!mostrarPassword) {
             setMostrarPassword(true);
@@ -41,6 +45,7 @@ function Register({ onClose }) {
                 };
 
                 signup(payload);
+                handleReload();
             } catch (error) {
                 console.error("Error al crear cuenta:", error);
             }
