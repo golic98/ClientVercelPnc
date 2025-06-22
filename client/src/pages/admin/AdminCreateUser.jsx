@@ -7,7 +7,7 @@ import assets from "../../../src/assets";
 
 export default function AdminCreateUser() {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { createUser, logout } = useAuth();
+    const { signup, logout } = useAuth();
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [successMessage] = useState("");
@@ -27,7 +27,7 @@ export default function AdminCreateUser() {
     };
 
     const onSubmit = handleSubmit(async (values) => {
-        createUser(values);
+        signup(values);
         handleReload();
     });
 
