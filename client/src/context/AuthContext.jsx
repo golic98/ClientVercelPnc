@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { 
+import {
   registerRequest,
   loginRequest,
   verifyTokenRequest,
@@ -54,8 +54,8 @@ export const AuthProvider = ({ children }) => {
   const signin = async (credentials) => {
     try {
       const res = await loginRequest(credentials);
-      persistToken(res.data.token);
-      setUser(res.data);
+      persistToken(res.data.token);       
+      setUser(res.data.user);            
       setIsAuthenticate(true);
     } catch (error) {
       const data = error.response?.data;
