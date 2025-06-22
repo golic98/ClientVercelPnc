@@ -30,7 +30,6 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [pay, setPay] = useState(null);
 
-  // Guardar token en cookie HTTP-accessible
   const persistToken = (token) => {
     Cookies.set("token", token, {
       expires: 7,
@@ -56,7 +55,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await loginRequest(credentials);
       persistToken(res.data.token);
-      setUser(res.data.user);
+      setUser(res.data);
       setIsAuthenticate(true);
     } catch (error) {
       const data = error.response?.data;
