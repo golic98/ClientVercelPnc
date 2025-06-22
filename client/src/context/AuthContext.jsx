@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
   const createUser = async (userData) => {
     try {
       const res = await registerRequestByAdmin(userData);
-      persistToken(res.data.token);
+      
       setUser(res.data);
       setIsAuthenticate(true);
     } catch (error) {
@@ -133,7 +133,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Limpiar errores automáticamente
   useEffect(() => {
     if (errors.length > 0) {
       const timer = setTimeout(() => setErrors([]), 5000);
@@ -141,7 +140,6 @@ export const AuthProvider = ({ children }) => {
     }
   }, [errors]);
 
-  // Verificar token al iniciar la app
   useEffect(() => {
     const checkLogin = async () => {
       const token = Cookies.get("token");
