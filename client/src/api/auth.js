@@ -9,4 +9,4 @@ export const deleteUserAdmin = (id) => axios.delete(`/users/${id}`);
 export const getOneProfileUser = (id) => axios.get(`/profile/${id}`);
 export const updateOneProfile = (id, profile) => axios.put(`/profile/${id}`, profile);
 export const addPayVigilanceFromUser = (pay) => axios.post("/payVigilance", pay);
-export const registerRequestByAdmin = (user) => axios.post("/users", user);
+export const registerRequestByAdmin = (user) => axios.post("/createUser", user);
