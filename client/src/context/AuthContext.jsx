@@ -62,16 +62,16 @@ export const AuthProvider = ({ children }) => {
       setErrors(Array.isArray(data) ? data : [data.message || data]);
     }
   };
-
+  
   const createUser = async (userData) => {
     try {
-      const res = await registerRequestByAdmin(userData);
-      const newUser = res.data;
-      setGetAdminUsers(prev => [...prev, newUser]);
+      await registerRequestByAdmin(userData);
+      const res = await getUsersAdmin();
+      setGetAdminUsers(res.data);
     } catch (error) {
       setErrors(error.response?.data || [error.message]);
     }
-  };
+  };  
 
   const logout = () => {
     Cookies.remove("token", { path: "/" });
