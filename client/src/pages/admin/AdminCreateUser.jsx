@@ -27,9 +27,17 @@ export default function AdminCreateUser() {
     };
 
     const onSubmit = handleSubmit(async (values) => {
-        createUser(values);
-        handleReload();
+        try {
+            await createUser(values);
+            reset(); // Limpia el formulario
+            alert("Usuario creado con éxito");
+            navigate("/admin"); // o recarga si prefieres
+        } catch (error) {
+            console.error("Error al crear usuario:", error);
+            alert("No se pudo crear el usuario.");
+        }
     });
+    
 
     return (
         <div className="admin-create-container">
