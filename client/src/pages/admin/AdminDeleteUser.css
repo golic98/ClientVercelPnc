@@ -1,0 +1,207 @@
+/* Barra de navegación */
+.admin-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #142B36;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 50px; /* Ajuste adecuado para móviles */
+}
+
+/* Ajustes al contenedor del logo */
+.admin-navbar .logo-container img {
+    height: 50px; /* Reduce el tamaño del logo */
+    width: auto;
+}
+
+/* Íconos de navegación */
+.admin-navbar .nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Reduce el espacio entre los íconos */
+}
+
+.admin-navbar .nav-icons img {
+    height: 40px; /* Ajuste de tamaño para íconos */
+    cursor: pointer;
+}
+
+/* Menú desplegable (dropdown) */
+.profile-menu {
+    position: relative;
+}
+
+.profile-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 40px; /* Ajustado para que se vea bien debajo del ícono */
+    right: 0;
+    background-color: #45727e;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: 150px; /* Ajusta el ancho del menú */
+    height: 90px;
+    z-index: 10;
+    display: none; /* Oculto por defecto */
+    animation: fadeIn 0.3s ease-in-out; /* Suavidad al aparecer */
+    padding: 0.5rem 0; /* Ajuste de espaciado interno */
+}
+
+.dropdown-menu.open {
+    display: block;
+}
+
+.menu-item {
+    font-size: 14px; /* Tamaño reducido para que quepa mejor */
+    font-family: Arial, sans-serif;
+    color: #fff;
+    padding: 0.2rem 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem; /* Reduce el espacio entre ícono y texto */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item img {
+    width: 18px; /* Tamaño reducido del ícono */
+    height: 18px;
+}
+
+.menu-item:hover {
+    background-color: #305a5e;
+}
+
+/* Contenedor del título */
+.admin-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #142B36; /* Fondo verde */
+    width: 60%; /* Ajusta el ancho */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* Estilo del texto */
+.admin-header h2 {
+    font-family: Arial, sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff; /* Texto blanco */
+    margin: 0; /* Sin margen */
+    text-align: center;
+}
+
+/* Contenedor de tarjetas */
+.admin-users-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Tarjetas */
+.admin-users-container .card {
+    background-color: #cbdaf2; /* Fondo azul claro */
+    border: 1px solid #81a5d8; /* Borde azul pastel */
+    color: #333333; /* Texto oscuro para contraste */
+    border-radius: 10px; /* Bordes más suaves */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suavidad en la animación */
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.15); /* Incrementa la sombra */
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333333;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #666666;
+    margin: 0.5rem 0;
+}
+
+/* Botón de eliminar */
+.card button {
+    background-color: #d9534f; /* Rojo claro */
+    color: #ffffff;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.card button:hover {
+    background-color: #c9302c; /* Rojo más oscuro */
+}
+
+.card button svg {
+    font-size: 1.2rem;
+}
+
+/* Efectos de animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajustes responsivos para móviles */
+@media (max-width: 768px) {
+    .admin-navbar {
+        justify-content: space-between; /* Mantener los elementos separados */
+        flex-direction: row; /* Asegurar que estén en una sola fila */
+        padding: 1rem; /* Ajustar el espacio para móviles */
+        height: 50px; /* Altura ajustada */
+    }
+
+    .admin-navbar .logo-container {
+        flex: 1; /* Hacer que el logo ocupe espacio suficiente a la izquierda */
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Alinear el logo a la izquierda */
+    }
+
+    .admin-navbar .nav-icons {
+        flex: 1; /* Hacer que los íconos ocupen el espacio restante */
+        display: flex;
+        justify-content: flex-end; /* Alinear los íconos a la derecha */
+        gap: 0.5rem; /* Mantener espacio entre los íconos */
+    }
+
+    .admin-navbar .nav-icons img {
+        height: 40px; /* Ajustar el tamaño de los íconos en móviles */
+    }
+}
