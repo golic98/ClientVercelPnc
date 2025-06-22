@@ -72,7 +72,7 @@ export default function AdminUpdateTask2() {
                             className=""
                         ></textarea>
                     </div>
-                    <button>
+                    <button type="submit">
                         Actualizar datos
                     </button>
                 </form>
