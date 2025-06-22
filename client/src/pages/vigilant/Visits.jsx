@@ -109,7 +109,7 @@ export default function Visits() {
                         {...register("visitHouse")}
                         className="input-field"
                     />
-                    <button type="submit" className="submit-button">
+                    <button type="submit">
                         Registrar visita
                     </button>
                 </form>
