@@ -22,14 +22,9 @@ export default function AdminCreateUser() {
         navigate("/");
     };
 
-    const handleReload = () => {
-        window.location.reload();
-    };
-
     const onSubmit = handleSubmit(async (values) => {
         createUser(values);
         navigate("/admin");
-        handleReload();
     });
 
     return (
