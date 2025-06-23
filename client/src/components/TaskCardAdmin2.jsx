@@ -17,7 +17,7 @@ function TaskCardAdmin({ task }) {
     };
 
     const onSubmit = async (values) => {
-        deleteTask2(task._id)
+        deleteTask2(task._id);
         handleReload();
     };
 
