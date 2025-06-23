@@ -40,7 +40,8 @@ export default function AdminUpdate() {
         }
         if (params.id) {
             updateProfile(params.id, data);
-            navigate("/profileAdmin");
+            navigate("/admin");
+            alert("Datos actualizados");
         }
     });
 
