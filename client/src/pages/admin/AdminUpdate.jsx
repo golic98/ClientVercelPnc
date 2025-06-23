@@ -42,6 +42,7 @@ export default function AdminUpdate() {
             updateProfile(params.id, data);
             navigate("/admin");
             alert("Datos actualizados");
+            handleReload();
         }
     });
 
