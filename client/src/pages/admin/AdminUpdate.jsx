@@ -41,7 +41,6 @@ export default function AdminUpdate() {
         if (params.id) {
             updateProfile(params.id, data);
             navigate("/profileAdmin");
-            handleReload();
         }
     });
 
