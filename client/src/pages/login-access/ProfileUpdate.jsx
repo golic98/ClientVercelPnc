@@ -41,7 +41,8 @@ export default function ProfileUpdate() {
         }
         if (params.id) {
             updateProfile(params.id, data);
-            navigate("/profile");
+            navigate("/user");
+            alert("Datos actualizados");
             handleReload();
         }
     });
