@@ -45,7 +45,7 @@ function TaskCardAdmin({ task }) {
                         <img src={task.image} width={200} height={200} />
                     </div>
                     <div>
-                        <button onClick={handleSubmit(onSubmit)}>
+                        <button type="submit" onClick={handleSubmit(onSubmit)}>
                             <MdDelete />
                         </button>
                         <Link to={`/taskd/${task._id}`}>
