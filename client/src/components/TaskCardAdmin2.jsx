@@ -17,8 +17,8 @@ function TaskCardAdmin({ task }) {
     };
 
     const onSubmit = async (values) => {
-        handleReload();
         deleteTask2(task._id)
+        handleReload();
     };
 
     useEffect(() => {
