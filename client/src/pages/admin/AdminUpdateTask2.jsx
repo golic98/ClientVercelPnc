@@ -30,7 +30,8 @@ export default function AdminUpdateTask2() {
     const onSubmit = handleSubmit((data) => {
         if (params.id) {
             updateTask2(params.id, data);
-            navigate("/admincreateanuncios");
+            navigate("/admin");
+            alert("Actualizado");
             handleReload();
         }
     });
