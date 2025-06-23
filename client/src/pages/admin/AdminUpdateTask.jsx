@@ -30,7 +30,8 @@ export default function AdminUpdateTask() {
     const onSubmit = handleSubmit((data) => {
         if (params.id) {
             updateTask(params.id, data);
-            navigate("/admincreatereports");
+            navigate("/admin");
+            alert("Actualizado");
             handleReload();
         }
     });

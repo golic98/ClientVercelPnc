@@ -12,6 +12,7 @@ function TaskCardAdmin({ task }) {
     const { setValue, handleSubmit } = useForm();
     const { oneTask, deleteTask, updateTask } = useTask();
     const params = useParams();
+    const navigate = useNavigate();
 
     const handleReload = () => {
         window.location.reload();
