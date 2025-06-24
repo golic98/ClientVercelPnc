@@ -20,6 +20,8 @@ function TaskCardAdmin({ task }) {
 
     const onSubmit = async (values) => {
         deleteTask(task._id);
+        navigate("/admin");
+        alert("Reporte eliminado");
     };
 
     useEffect(() => {
