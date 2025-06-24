@@ -11,6 +11,7 @@ function TaskCardAdmin({ task }) {
     const { setValue, handleSubmit } = useForm();
     const { oneTask, deleteTask2 } = useTask();
     const params = useParams();
+    const navigate = useNavigate();
 
     const handleReload = () => {
         window.location.reload();
@@ -18,7 +19,8 @@ function TaskCardAdmin({ task }) {
 
     const onSubmit = async (values) => {
         deleteTask2(task._id);
-        handleReload();
+        navigate("/admin");
+        alert("Anuncio eliminado");
     };
 
     useEffect(() => {
