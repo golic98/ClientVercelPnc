@@ -41,7 +41,7 @@ export default function AdminProfile() {
                     <div className="left-side">
                         <img src={assets.usuario1} alt="Usuario" className="profile-pic" />
                         <h2>Administrador</h2>
-                        <p className="description">Meg es el administrador general de ésta organización</p>
+                        <p className="description">Administrador general de ésta organización</p>
                         <Link to={`/editAdmin/${user.id}`} className="edit-button">Editar Perfil</Link>
                     </div>
 
