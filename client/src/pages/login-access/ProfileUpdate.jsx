@@ -43,7 +43,6 @@ export default function ProfileUpdate() {
             updateProfile(params.id, data);
             navigate("/user");
             alert("Datos actualizados");
-            handleReload();
         }
     });
 
