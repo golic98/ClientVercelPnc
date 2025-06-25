@@ -32,7 +32,6 @@ export default function AdminUpdateTask() {
             updateTask(params.id, data);
             navigate("/admin");
             alert("Actualizado");
-            handleReload();
         }
     });
 
