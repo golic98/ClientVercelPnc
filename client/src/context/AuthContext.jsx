@@ -112,7 +112,8 @@ export const AuthProvider = ({ children }) => {
 
   const updateProfile = async (id, profile) => {
     try {
-      await updateOneProfile(id, profile);
+      const res = await updateOneProfile(id, profile);
+      setUser(res.data);
     } catch (error) {
       console.error(error);
     }
