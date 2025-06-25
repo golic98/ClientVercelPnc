@@ -25,7 +25,7 @@ export default function AdminUpdate() {
             }
         }
         loadProfile();
-    }, [params.id, setValue, getOneProfile]);
+    }, []);
 
     const onSubmit = handleSubmit(async(data) => {
         if(data.password && data.password.trim() !== "") {
@@ -38,7 +38,6 @@ export default function AdminUpdate() {
             await updateProfile(params.id, data);
             navigate("/admin");
             alert("Datos actualizados");
-            
         }
     });
 
