@@ -57,15 +57,14 @@ export default function Profile() {
                         <p className="description">Bienvenido a tu perfil {user.name}</p>
                         <Link to={`/profile/${user.id}`} className="edit-button">Editar Perfil</Link>
                     </div>
-
                     <div className="right-side">
                         <div className="info-card">
                             <h3>Nombre:</h3>
-                            <p>{user.name}</p>
+                            <p>{profile.name}</p>
                             <h3>Email:</h3>
-                            <p>{user.email}</p>
+                            <p>{profile.email}</p>
                             <h3>Edad:</h3>
-                            <p>{user.age}</p>
+                            <p>{profile.age}</p>
                         </div>
                     </div>
                 </div>
