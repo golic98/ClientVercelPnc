@@ -113,7 +113,7 @@ export const AuthProvider = ({ children }) => {
   const updateProfile = async (id, profile) => {
     try {
       const res = await updateOneProfile(id, profile);
-      
+      return res.data;
     } catch (error) {
       console.error(error);
     }
