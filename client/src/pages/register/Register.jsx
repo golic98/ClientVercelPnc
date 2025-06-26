@@ -43,12 +43,6 @@ function Register({ onClose }) {
                     password: values.password,
                 };
                 await signup(payload);
-
-                setTimeout(() => {
-                    if (registerErrors.length === 0) {
-                        onClose();
-                    }
-                }, 0);
             } catch (error) {
                 console.error("Error al crear cuenta:", error);
             }
