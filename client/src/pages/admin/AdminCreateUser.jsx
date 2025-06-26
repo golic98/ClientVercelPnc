@@ -23,10 +23,15 @@ export default function AdminCreateUser() {
     };
 
     const onSubmit = handleSubmit(async (values) => {
-        createUser(values);
-        navigate("/admin");
-        alert("Usuario creado");
-    });
+        try {
+            await createUser(values);
+            navigate("/admin");
+            alert("Usuario creado");
+        } catch (error) {
+            console.error("Error al crear el usuario:", error);
+            alert("Hubo un error al crear el usuario. Intenta de nuevo.");
+        }
+    });    
 
     return (
         <div className="admin-create-container">
