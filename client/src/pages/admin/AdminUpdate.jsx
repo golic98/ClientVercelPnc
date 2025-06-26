@@ -8,7 +8,7 @@ import "./AdminUpdate.css";
 
 export default function AdminUpdate() {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
-    const { getOneProfile, updateProfile, setUser } = useAuth();
+    const { getOneProfile, updateProfile, setUser, user } = useAuth();
     const params = useParams();
     const navigate = useNavigate();
 
