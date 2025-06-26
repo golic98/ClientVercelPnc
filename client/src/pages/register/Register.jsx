@@ -43,10 +43,14 @@ function Register({ onClose }) {
                     password: values.password,
                 };
                 await signup(payload);
+
+                setTimeout(() => {
+                    if (registerErrors.length === 0) {
+                        onClose();
+                    }
+                }, 0);
             } catch (error) {
                 console.error("Error al crear cuenta:", error);
-            } finally {
-                onClose();
             }
         }
     });
@@ -63,7 +67,7 @@ function Register({ onClose }) {
                     </button>
                 )}
 
-                <h2 style={{color: "white"}} className="register-title">Crea tu cuenta</h2>
+                <h2 style={{ color: "white" }} className="register-title">Crea tu cuenta</h2>
 
                 <form onSubmit={onSubmit} className="register-form">
                     <input
@@ -144,12 +148,12 @@ function Register({ onClose }) {
                         </>
                     )}
 
-                    <button style={{background: "white", color: "black"}} type="submit" className="register-next-button">
+                    <button style={{ background: "white", color: "black" }} type="submit" className="register-next-button">
                         {mostrarPassword ? "Registrar" : "Siguiente"}
                     </button>
                 </form>
-                <p style={{color: "white"}}>¿Ya tienes cuenta? <Link to={"/login"} style={{color: "white"}} className="register-login-link">Inicia sesión</Link> </p>
-                <button style={{padding: "8px"}} onClick={onClose}>Cancelar</button>
+                <p style={{ color: "white" }}>¿Ya tienes cuenta? <Link to={"/login"} style={{ color: "white" }} className="register-login-link">Inicia sesión</Link> </p>
+                <button style={{ padding: "8px" }} onClick={onClose}>Cancelar</button>
                 <br />
                 {registerErrors.map((error, i) => (
                     <div key={i} className="register-error">
