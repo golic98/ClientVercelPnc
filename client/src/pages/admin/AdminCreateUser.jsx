@@ -104,7 +104,6 @@ export default function AdminCreateUser() {
                         <div className="form-group">
                             <label htmlFor="name">Nombre</label>
                             <input type="text" {...register("name", { required: true })}
-                                className=""
                                 placeholder="Ingrese el nombre del usuario"
                             />
                             {errors.name && <p className="register-error-text">El nombre es requerido</p>}
@@ -113,7 +112,7 @@ export default function AdminCreateUser() {
                             <label htmlFor="username">Username</label>
                             <input type="text" {...register("username", { required: true })}
                                 className=""
-                                placeholder="Ingrese el usuario nuevo"
+                                placeholder="Ingrese su usuario nuevo"
                             />
                             {errors.username && <p className="register-error-text">El usuario es requerido</p>}
                         </div>
@@ -145,12 +144,10 @@ export default function AdminCreateUser() {
                             <label htmlFor="age">Edad</label>
                             <input
                                 type="number"
+                                {...register("age", { required: true })}
+                                placeholder="Ingrese su edad"
                                 min="0"
-                                {...register("age", {
-                                    required: "La edad es requerida",
-                                    min: { value: 0, message: "La edad no puede ser negativa" }
-                                })}
-                                placeholder="Ingrese la edad"
+                                step="1"
                             />
                             {errors.age && <p className="register-error-text">La edad es requerida</p>}
                         </div>
