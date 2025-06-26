@@ -32,7 +32,6 @@ function Register({ onClose }) {
                 alert("Las contraseñas no coinciden.");
                 return;
             }
-
             try {
                 const payload = {
                     name: values.name,
@@ -45,7 +44,7 @@ function Register({ onClose }) {
                 };
 
                 await signup(payload);
-                navigate("/login");
+                navigate("/");
             } catch (error) {
                 console.error("Error al crear cuenta:", error);
             }
