@@ -2,27 +2,23 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import assets from "../../../src/assets";
+import { useLocation } from "react-router-dom";
 import "./AdminProfile.css";
 
 export default function AdminProfile() {
-
     const { user, getOneProfile } = useAuth();
     const [profile, setProfile] = useState(user);
-
+    const location = useLocation();
 
     useEffect(() => {
         const fetchProfile = async () => {
-            const updatedProfile = await getOneProfile(user.id);
-            setProfile(updatedProfile);
+          const updated = await getOneProfile(user.id);
+          setProfile(updated);
         };
-
-        if (user?.id) {
-            fetchProfile();
-        }
-    }, [user?.id]);
+        if (user?.id) fetchProfile();
+      }, [user?.id, location.key]);
 
     if (!profile) return <p>Cargando...</p>;
-
 
     return (
         <div>
