@@ -12,11 +12,11 @@ export default function AdminProfile() {
 
     useEffect(() => {
         const fetchProfile = async () => {
-          const updated = await getOneProfile(user.id);
-          setProfile(updated);
+            const updated = await getOneProfile(user.id);
+            setProfile(updated);
         };
         if (user?.id) fetchProfile();
-      }, [user?.id, location.key]);
+    }, [user?.id, location.key]);
 
     if (!profile) return <p>Cargando...</p>;
 
@@ -57,17 +57,16 @@ export default function AdminProfile() {
                         <p className="description">Administrador general de ésta organización</p>
                         <Link to={`/editAdmin/${user.id}`} className="edit-button">Editar Perfil</Link>
                     </div>
-
                     <div className="right-side">
                         <div className="info-card">
                             <h3>Nombre:</h3>
-                            <p>{user.name}</p>
+                            <p>{profile.name}</p>
                             <h3>Email:</h3>
-                            <p>{user.email}</p>
+                            <p>{profile.email}</p>
                             <h3>Edad:</h3>
-                            <p>{user.age}</p>
+                            <p>{profile.age}</p>
                             <h3>Contacto</h3>
-                            <p>{user.telephone}</p>
+                            <p>{profile.telephone}</p>
                         </div>
                     </div>
                 </div>
