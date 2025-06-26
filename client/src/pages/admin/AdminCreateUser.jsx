@@ -24,14 +24,24 @@ export default function AdminCreateUser() {
 
     const onSubmit = handleSubmit(async (values) => {
         try {
-            await createUser(values);
+            const payload = {
+                name: values.name,
+                username: values.username,
+                email: values.email,
+                telephone: values.telephone,
+                age: values.age,
+                role: values.role,
+                password: values.password,
+            };
+
+            await createUser(payload);
             navigate("/admin");
             alert("Usuario creado");
         } catch (error) {
             console.error("Error al crear el usuario:", error);
             alert("Hubo un error al crear el usuario. Intenta de nuevo.");
         }
-    });    
+    });
 
     return (
         <div className="admin-create-container">
@@ -97,9 +107,7 @@ export default function AdminCreateUser() {
                                 className=""
                                 placeholder="Ingrese el nombre del usuario"
                             />
-                            {
-                                errors.name && (<p>El nombre es requerido</p>)
-                            }
+                            {errors.name && <p className="register-error-text">El nombre es requerido</p>}
                         </div>
                         <div className="form-group">
                             <label htmlFor="username">Username</label>
@@ -107,9 +115,7 @@ export default function AdminCreateUser() {
                                 className=""
                                 placeholder="Ingrese el usuario nuevo"
                             />
-                            {
-                                errors.username && (<p>El usuario es requerido</p>)
-                            }
+                            {errors.username && <p className="register-error-text">El usuario es requerido</p>}
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
@@ -117,9 +123,7 @@ export default function AdminCreateUser() {
                                 className=""
                                 placeholder="Ingrese su email"
                             />
-                            {
-                                errors.email && (<p>El email es requerido</p>)
-                            }
+                            {errors.email && <p className="register-error-text">El email es requerido</p>}
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Contraseña</label>
@@ -127,9 +131,7 @@ export default function AdminCreateUser() {
                                 className=""
                                 placeholder="Ingrese una contraseña para el usuario"
                             />
-                            {
-                                errors.password && (<p>La contraseña es requerida</p>)
-                            }
+                            {errors.password && <p className="register-error-text">La contraseña es requerida</p>}
                         </div>
                         <div className="form-group">
                             <label htmlFor="telephone">Teléfono</label>
@@ -137,9 +139,7 @@ export default function AdminCreateUser() {
                                 className=""
                                 placeholder="Ingrese el número de telefono"
                             />
-                            {
-                                errors.telephone && (<p>El teléfono es requerido</p>)
-                            }
+                            {errors.telephone && <p className="register-error-text">El teléfono es requerido</p>}
                         </div>
                         <div className="form-group">
                             <label htmlFor="age">Edad</label>
@@ -152,10 +152,7 @@ export default function AdminCreateUser() {
                                 })}
                                 placeholder="Ingrese la edad"
                             />
-
-                            {
-                                errors.age && (<p>La edad es requerida</p>)
-                            }
+                            {errors.age && <p className="register-error-text">La edad es requerida</p>}
                         </div>
                         <div className="form-group">
                             <select
@@ -169,7 +166,7 @@ export default function AdminCreateUser() {
                             </select>
                             {errors.role && <p className="register-error-text">El rol es requerido</p>}
                         </div>
-                        
+
                         <div className="form-actions">
                             <button
                                 type="button"

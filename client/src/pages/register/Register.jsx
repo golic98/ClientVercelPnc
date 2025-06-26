@@ -44,7 +44,7 @@ function Register({ onClose }) {
                     password: values.password,
                 };
 
-                signup(payload);
+                await signup(payload);
                 navigate("/login");
             } catch (error) {
                 console.error("Error al crear cuenta:", error);
