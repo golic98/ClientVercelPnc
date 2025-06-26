@@ -115,6 +115,8 @@ body {
   border-radius: 50px;
   cursor: pointer;
   font-family: "Roboto Slab", serif;
+  border: none;
+  box-shadow: none;
 }
 
 .register-button-home:hover,
