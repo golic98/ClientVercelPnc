@@ -44,7 +44,6 @@ function Register({ onClose }) {
                 };
 
                 await signup(payload);
-                navigate("/login");
                 alert("Usuario creado");    
             } catch (error) {
                 console.error("Error al crear cuenta:", error);
