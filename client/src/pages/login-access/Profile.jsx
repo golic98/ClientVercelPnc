@@ -1,12 +1,24 @@
 import { useAuth } from "../../context/AuthContext";
+import { useEffect, useState } from "react";
 import { MdModeEdit } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import assets from "../../../src/assets";
 import "./Profile.css";
 
 export default function Profile() {
+    const { user, getOneProfile } = useAuth();
+    const [profile, setProfile] = useState(user);
+    const location = useLocation();
 
-    const { user } = useAuth();
+    useEffect(() => {
+        const fetchProfile = async () => {
+            const updated = await getOneProfile(user.id);
+            setProfile(updated);
+        };
+        if (user?.id) fetchProfile();
+    }, [user?.id, location.key]);
+
+    if (!profile) return <p>Cargando...</p>;
 
     return (
         <div>
@@ -14,7 +26,7 @@ export default function Profile() {
                 <nav className="user-home-navbar">
                     <div className="user-home-navbar-left">
                         <Link>
-                            
+
                         </Link>
                     </div>
                     <div className="user-home-navbar-right">
