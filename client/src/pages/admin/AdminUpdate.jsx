@@ -37,7 +37,7 @@ export default function AdminUpdate() {
         if(params.id) {
             await updateProfile(params.id, data);
 
-            if (params.id === user?._id) {
+            if (params.id === user?.id) {
                 const perfilActualizado = await getOneProfile(params.id);
                 setUser(perfilActualizado);
             }
