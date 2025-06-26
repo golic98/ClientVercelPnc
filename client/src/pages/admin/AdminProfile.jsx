@@ -42,7 +42,7 @@ export default function AdminProfile() {
                         <img src={assets.usuario1} alt="Usuario" className="profile-pic" />
                         <h2>Administrador</h2>
                         <p className="description">Administrador general de ésta organización</p>
-                        <Link to={`/editAdmin/${user._id}`} className="edit-button">Editar Perfil</Link>
+                        <Link to={`/editAdmin/${user?._id}`} className="edit-button">Editar Perfil</Link>
                     </div>
 
                     <div className="right-side">
