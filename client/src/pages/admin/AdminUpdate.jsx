@@ -8,7 +8,7 @@ import "./AdminUpdate.css";
 
 export default function AdminUpdate() {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
-    const { getOneProfile, updateProfile, setUser,user } = useAuth();
+    const { getOneProfile, updateProfile, setUser } = useAuth();
     const params = useParams();
     const navigate = useNavigate();
 
@@ -36,12 +36,7 @@ export default function AdminUpdate() {
         }
         if(params.id) {
             await updateProfile(params.id, data);
-
-            if (params.id === user?._id) {
-                const perfilActualizado = await getOneProfile(params.id);
-                setUser(perfilActualizado);
-            }
-
+            setUser(perfilActualizado);
             navigate("/admin");
             alert("Datos actualizados");
         }
