@@ -5,7 +5,23 @@ import "./AdminProfile.css";
 
 export default function AdminProfile() {
 
-    const { user } = useAuth();
+    const { user, getOneProfile } = useAuth();
+    const [profile, setProfile] = useState(user);
+
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            const updatedProfile = await getOneProfile(user.id);
+            setProfile(updatedProfile);
+        };
+
+        if (user?.id) {
+            fetchProfile();
+        }
+    }, [user?.id]);
+
+    if (!profile) return <p>Cargando...</p>;
+
 
     return (
         <div>
@@ -13,7 +29,7 @@ export default function AdminProfile() {
                 <nav className="user-home-navbar">
                     <div className="user-home-navbar-left">
                         <Link>
-                            
+
                         </Link>
                     </div>
                     <div className="user-home-navbar-right">
