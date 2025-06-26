@@ -66,7 +66,6 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       const data = error.response?.data || { message: "Error desconocido" };
       setErrors(Array.isArray(data) ? data : [data.message || data]);
-      throw new Error(data.message || "Error al crear el usuario");
     }
   };
 
