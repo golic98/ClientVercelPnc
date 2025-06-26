@@ -42,7 +42,8 @@ function Register({ onClose }) {
                     role: values.role,
                     password: values.password,
                 };
-                await signup(payload);  
+                await signup(payload);
+                onClose();
             } catch (error) {
                 console.error("Error al crear cuenta:", error);
             }
