@@ -30,7 +30,7 @@ import AdminCreateAnuncios from "./pages/admin/AdminCreateAnuncios.jsx";
 import AdminUpdateTask2 from "./pages/admin/AdminUpdateTask2.jsx";
 import AdminPayVigilance from "./pages/admin/AdminPayVigilance.jsx";
 import Users from "./pages/login-access/Users.jsx";
-import './index.css'
+
 
 function App() {
 
