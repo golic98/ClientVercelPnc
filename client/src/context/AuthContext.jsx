@@ -51,20 +51,22 @@ export const AuthProvider = ({ children }) => {
   const signin = async (credentials) => {
     try {
       const res = await loginRequest(credentials);
-      persistToken(res.data.token);       
-      setUser(res.data.user);            
+      persistToken(res.data.token);
+      setUser(res.data.user);
       setIsAuthenticate(true);
     } catch (error) {
       const data = error.response?.data;
       setErrors(Array.isArray(data) ? data : [data.message || data]);
     }
   };
-  
+
   const createUser = async (userData) => {
     try {
       await registerRequestByAdmin(userData);
     } catch (error) {
-      setErrors(error.response?.data || [error.message]);
+      const data = error.response?.data || { message: "Error desconocido" };
+      setErrors(Array.isArray(data) ? data : [data.message || data]);
+      throw new Error(data.message || "Error al crear el usuario");
     }
   };
 
