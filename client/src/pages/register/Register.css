@@ -121,6 +121,10 @@
     margin-top: 20px;
 }
 
+.register-error {
+    color: white;
+  }
+
 .register-back-button {
     background: none;
     border: none;
