@@ -29,7 +29,7 @@ export default function AdminCreateUser() {
                 setSuccessMessage("¡Cuenta creada con éxito!");
                 const timer = setTimeout(() => {
                     navigate("/admin");
-                }, 3000);
+                }, 10000);
                 return () => clearTimeout(timer);
             }
             setSubmitted(false);
