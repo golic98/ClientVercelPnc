@@ -46,7 +46,7 @@ export default function AdminCreateUser() {
 
             await createUser(payload);
             setSubmitted(true);
-            navigate("/admin");
+            
         } catch (error) {
             console.error("Error al crear el usuario:", error);
             alert("Hubo un error al crear el usuario. Intenta de nuevo.");
