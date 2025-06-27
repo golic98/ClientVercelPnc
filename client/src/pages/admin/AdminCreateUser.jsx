@@ -43,7 +43,6 @@ export default function AdminCreateUser() {
                 role: values.role,
                 password: values.password,
             };
-
             await createUser(payload);
             setSubmitted(true);
         } catch (error) {
