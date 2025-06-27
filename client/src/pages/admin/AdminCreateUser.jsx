@@ -27,10 +27,15 @@ export default function AdminCreateUser() {
         if (submitted) {
             if (registerErrors.length === 0) {
                 setSuccessMessage("¡Cuenta creada con éxito!");
+                const timer = setTimeout(() => {
+                    navigate("/admin");
+                }, 3000);
+                return () => clearTimeout(timer);
             }
             setSubmitted(false);
         }
-    }, [registerErrors, submitted]);
+    }, [registerErrors, submitted, navigate]);
+    
 
     const onSubmit = handleSubmit(async (values) => {
         try {
