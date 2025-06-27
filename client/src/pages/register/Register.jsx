@@ -12,6 +12,7 @@ function Register({ onClose }) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { signup, isAuthenticate, errors: registerErrors } = useAuth();
     const [successMessage, setSuccessMessage] = useState("");
+    const [submitted, setSubmitted] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,9 +21,14 @@ function Register({ onClose }) {
         }
     }, [isAuthenticate, navigate]);
 
-    const handleReload = () => {
-        window.location.reload();
-    };
+    useEffect(() => {
+        if (submitted) {
+          if (registerErrors.length === 0) {
+            setSuccessMessage("¡Cuenta creada con éxito!");
+          }
+          setSubmitted(false);
+        }
+      }, [registerErrors, submitted]);
 
     const onSubmit = handleSubmit(async (values) => {
         if (!mostrarPassword) {
@@ -42,10 +48,7 @@ function Register({ onClose }) {
                     role: values.role,
                     password: values.password,
                 };
-                const result = await signup(payload);
-                if (result.success) {
-                    setSuccessMessage("¡Cuenta creada con éxito!");
-                }
+                await signup(payload);
             } catch (error) {
                 console.error("Error al crear cuenta:", error);
             }
