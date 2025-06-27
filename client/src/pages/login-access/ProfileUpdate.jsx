@@ -28,10 +28,6 @@ export default function ProfileUpdate() {
         loadProfile();
     }, []);
 
-    const handleReload = () => {
-        window.location.reload();
-    };
-
     const onSubmit = handleSubmit((data) => {
         if (data.password && data.password.trim() !== "") {
             const salt = bcrypt.genSaltSync(10);

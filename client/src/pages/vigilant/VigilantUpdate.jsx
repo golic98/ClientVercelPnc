@@ -28,10 +28,6 @@ export default function VigilantUpdate() {
         loadProfile();
     }, []);
 
-    const handleReload = () => {
-        window.location.reload();
-    };
-
     const onSubmit = handleSubmit((data) => {
         if (data.password && data.password.trim() !== "") {
             const salt = bcrypt.genSaltSync(10);
@@ -41,8 +37,8 @@ export default function VigilantUpdate() {
         }
         if (params.id) {
             updateProfile(params.id, data);
-            navigate("/profileVigilant");
-            handleReload();
+            navigate("/vigilant");
+            alert("Datos actualizados");
         }
     });
 

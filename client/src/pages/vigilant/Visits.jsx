@@ -25,9 +25,9 @@ export default function Visits() {
 
     const onSubmit = handleSubmit((data) => {
         createVisitVigilant(data);
-        handleReload();
+        navigate("/vigilant");
+        alert("Visita registrada");
     });
-
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
