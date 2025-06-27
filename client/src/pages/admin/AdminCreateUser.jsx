@@ -46,10 +46,8 @@ export default function AdminCreateUser() {
 
             await createUser(payload);
             setSubmitted(true);
-            
         } catch (error) {
             console.error("Error al crear el usuario:", error);
-            alert("Hubo un error al crear el usuario. Intenta de nuevo.");
         }
     });
 
@@ -173,7 +171,6 @@ export default function AdminCreateUser() {
                             </select>
                             {errors.role && <p className="register-error-text">El rol es requerido</p>}
                         </div>
-
                         <div className="form-actions">
                             <button
                                 type="button"
