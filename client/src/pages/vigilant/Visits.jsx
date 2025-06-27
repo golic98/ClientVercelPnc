@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useTask } from "../../context/TaskContext";
 import { useAuth } from "../../context/AuthContext"; 
 import VisitCard from "../../components/VisitCard";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./Visits.css";
 import assets from "../../../src/assets";
 
@@ -11,17 +11,14 @@ export default function Visits() {
     const { register, handleSubmit } = useForm();
     const { createVisitVigilant, getVisitVigilant, addVisit } = useTask();
     const { logout } = useAuth(); 
+    const location = useLocation();
 
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         getVisitVigilant();
-    }, []);
-
-    const handleReload = () => {
-        window.location.reload();
-    };
+    }, [location.pathname]);
 
     const onSubmit = handleSubmit((data) => {
         createVisitVigilant(data);
