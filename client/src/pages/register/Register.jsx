@@ -9,9 +9,9 @@ function Register({ onClose }) {
     const [mostrarPassword, setMostrarPassword] = useState(false);
     const [verPassword, setVerPassword] = useState(false);
     const [verConfirmPassword, setVerConfirmPassword] = useState(false);
-
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { signup, isAuthenticate, errors: registerErrors } = useAuth();
+    const [successMessage, setSuccessMessage] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -43,6 +43,7 @@ function Register({ onClose }) {
                     password: values.password,
                 };
                 await signup(payload);
+                setSuccessMessage("¡Cuenta creada con éxito!");
             } catch (error) {
                 console.error("Error al crear cuenta:", error);
             }
@@ -154,6 +155,11 @@ function Register({ onClose }) {
                         {error}
                     </div>
                 ))}
+                {successMessage && (
+                    <div className="register-error">
+                        {successMessage}
+                    </div>
+                )}
             </div>
         </div>
     );
