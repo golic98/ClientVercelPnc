@@ -42,8 +42,10 @@ function Register({ onClose }) {
                     role: values.role,
                     password: values.password,
                 };
-                await signup(payload);
-                setSuccessMessage("¡Cuenta creada con éxito!");
+                const result = await signup(payload);
+                if (result.success) {
+                    setSuccessMessage("¡Cuenta creada con éxito!");
+                }
             } catch (error) {
                 console.error("Error al crear cuenta:", error);
             }
