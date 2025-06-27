@@ -186,12 +186,12 @@ export default function AdminCreateUser() {
                     </form>
                     <br />
                     {registerErrors.map((error, i) => (
-                        <div key={i} className="register-error">
+                        <div key={i} className="">
                             {error}
                         </div>
                     ))}
                     {successMessage && (
-                        <div className="register-error">
+                        <div className="">
                             {successMessage}
                         </div>
                     )}
