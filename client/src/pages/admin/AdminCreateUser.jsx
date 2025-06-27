@@ -10,8 +10,9 @@ export default function AdminCreateUser() {
     const { createUser, logout, errors: registerErrors } = useAuth();
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [successMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage] = useState("");
+    const [submitted, setSubmitted] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen((prev) => !prev);
@@ -21,6 +22,15 @@ export default function AdminCreateUser() {
         logout();
         navigate("/");
     };
+
+    useEffect(() => {
+        if (submitted) {
+            if (registerErrors.length === 0) {
+                setSuccessMessage("¡Cuenta creada con éxito!");
+            }
+            setSubmitted(false);
+        }
+    }, [registerErrors, submitted]);
 
     const onSubmit = handleSubmit(async (values) => {
         try {
@@ -35,8 +45,8 @@ export default function AdminCreateUser() {
             };
 
             await createUser(payload);
+            setSubmitted(true);
             navigate("/admin");
-            alert("Usuario creado");
         } catch (error) {
             console.error("Error al crear el usuario:", error);
             alert("Hubo un error al crear el usuario. Intenta de nuevo.");
@@ -177,6 +187,17 @@ export default function AdminCreateUser() {
                             </button>
                         </div>
                     </form>
+                    <br />
+                    {registerErrors.map((error, i) => (
+                        <div key={i} className="register-error">
+                            {error}
+                        </div>
+                    ))}
+                    {successMessage && (
+                        <div className="register-error">
+                            {successMessage}
+                        </div>
+                    )}
                 </div>
             </main>
         </div>
