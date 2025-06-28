@@ -9,7 +9,7 @@ export default function CardShowUserAdmin({user}) {
     return(
         <div>
             <div className="card">
-                <h2>{user.username}</h2>
+                <h2>{user.name}</h2>
                 <p>{user.email}</p>
                 <button onClick={() => { deleteUser(user.id)}}>
                     <MdDelete />
