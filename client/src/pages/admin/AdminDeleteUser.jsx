@@ -76,7 +76,7 @@ export default function AdminDeleteUser() {
             <div className="admin-users-container">
                 {getAdminUsers.map((usr) => (
                     <CardShowUserAdmin
-                        user={usr}
+                        user={usr.name}
                         key={usr.id}
                     />
                 ))}
