@@ -9,7 +9,8 @@ import {
   updateOneProfile,
   addPayVigilanceFromUser,
   getAllUsersForUser,
-  registerRequestByAdmin
+  registerRequestByAdmin,
+  updatePasswordRequest
 } from "../api/auth.js";
 import Cookies from "js-cookie";
 
@@ -37,6 +38,20 @@ export const AuthProvider = ({ children }) => {
       sameSite: "none",
       path: "/",
     });
+  };
+
+  const updatePasswordByPassword = async ({ username, password }) => {
+    try {
+      setErrors([]);
+      await updatePasswordRequest({ username, password });
+    } catch (error) {
+      const data = error.response?.data;
+      const msgs = Array.isArray(data)
+        ? data
+        : [data?.message || "Error al actualizar la contraseña"];
+      setErrors(msgs);
+      throw error;
+    }
   };
 
   const signup = async (userData) => {
@@ -182,6 +197,7 @@ export const AuthProvider = ({ children }) => {
         isAuthenticate,
         loading,
         errors,
+        updatePasswordByPassword
       }}
     >
       {children}

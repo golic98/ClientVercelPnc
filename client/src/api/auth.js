@@ -10,3 +10,4 @@ export const getOneProfileUser = (id) => axios.get(`/profile/${id}`);
 export const updateOneProfile = (id, profile) => axios.put(`/profile/${id}`, profile);
 export const addPayVigilanceFromUser = (pay) => axios.post("/payVigilance", pay);
 export const registerRequestByAdmin = (user) => axios.post("/createUser", user);
+export const updatePasswordRequest = ({ username, password }) => axios.put("/updatePassword", { username, password });

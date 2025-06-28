@@ -6,13 +6,12 @@ function ResetPassword({ onClose }) {
     const { updatePasswordByPassword, errors: updateErrors } = useAuth();
 
     const onSubmit = handleSubmit(async (data) => {
-        console.log("Datos enviados:", data);
         try {
             await updatePasswordByPassword(data);
             onClose();
         } catch (err) {
-            console.log("Error al actualizar la contraseña");
-        }
+            console.error("Error al actualizar la contraseña:", err);
+          }  
     });
 
     return (
