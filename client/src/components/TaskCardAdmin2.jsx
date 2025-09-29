@@ -1,27 +1,15 @@
-import { useAuth } from "../context/AuthContext.jsx";
 import { useTask } from "../context/TaskContext";
 import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import "./TaskCard.css";
 
 function TaskCardAdmin({ task }) {
-    const { setValue, handleSubmit } = useForm();
+    const { setValue } = useForm();
     const { oneTask, deleteTask2 } = useTask();
     const params = useParams();
-    const navigate = useNavigate();
-
-    const handleReload = () => {
-        window.location.reload();
-    };
-
-    const onSubmit = async (values) => {
-        deleteTask2(task._id);
-        navigate("/admin");
-        alert("Anuncio eliminado");
-    };
 
     useEffect(() => {
         async function loadTask() {
@@ -47,7 +35,7 @@ function TaskCardAdmin({ task }) {
                         <img src={task.image} width={200} height={200} />
                     </div>
                     <div>
-                        <button type="submit" onClick={handleSubmit(onSubmit)}>
+                        <button onClick={() => { deleteTask2(task._id)}}>
                             <MdDelete />
                         </button>
                         <Link to={`/taskd/${task._id}`}>

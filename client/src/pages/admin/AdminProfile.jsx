@@ -1,76 +1,41 @@
-import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
 import assets from "../../../src/assets";
-import { useLocation } from "react-router-dom";
-import "./AdminProfile.css";
+import UpdateUserForm from "../../components/forms/UpdateUserForm";
+import Popup from "reactjs-popup";
 
 export default function AdminProfile() {
-    const { user, getOneProfile } = useAuth();
-    const [profile, setProfile] = useState(user);
-    const location = useLocation();
 
-    useEffect(() => {
-        const fetchProfile = async () => {
-            const updated = await getOneProfile(user.id);
-            setProfile(updated);
-        };
-        if (user?.id) fetchProfile();
-    }, [user?.id, location.key]);
-
-    if (!profile) return <p>Cargando...</p>;
+    const { user } = useAuth();
 
     return (
-        <div>
-            <div>
-                <nav className="user-home-navbar">
-                    <div className="user-home-navbar-left">
-                        <Link>
+        <main className="flex grow-1 justify-center items-center p-16">
+            <div className="flex flex-row gap-32 w-9/10 max-w-1200 items-start">
+                <div className="flex grow-1 text-center flex-col items-center gap-24">
+                    <img src={assets.usuario1} alt="Usuario" className="profile-pic" />
+                    <h2 className="text-[2rem] my-8 mx-0 text-dark-slate">Administrador</h2>
+                    <p className="text-[1.2rem] my-8 ml-0 text-light-gray">Meg es el administrador general de ésta organización</p>
 
-                        </Link>
-                    </div>
-                    <div className="user-home-navbar-right">
-                        <Link to="/admin">
-                            <img
-                                src={assets.casa}
-                                alt="Inicio"
-                                className="user-home-icono"
-                            />
-                        </Link>
-                        <div className="user-home-dropdown">
-                            <Link to="/profileAdmin">
-                                <img
-                                    src={assets.usuario1}
-                                    alt="Usuario"
-                                    className="user-home-icono-usuario"
-                                />
-                            </Link>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <main className="main-content">
-                <div className="content-container">
-                    <div className="left-side">
-                        <img src={assets.usuario1} alt="Usuario" className="profile-pic" />
-                        <h2>Administrador</h2>
-                        <p className="description">Administrador general de ésta organización</p>
-                        <Link to={`/editAdmin/${user.id}`} className="edit-button">Editar Perfil</Link>
-                    </div>
-                    <div className="right-side">
-                        <div className="info-card">
-                            <h3>Nombre:</h3>
-                            <p>{profile.name}</p>
-                            <h3>Email:</h3>
-                            <p>{profile.email}</p>
-                            <h3>Edad:</h3>
-                            <p>{profile.age}</p>
-                            <h3>Contacto</h3>
-                            <p>{profile.telephone}</p>
-                        </div>
+                    <Popup trigger={<button className="bg-light-slate text-white py-12 px-24 rounded-md text-[1rem]
+                    duration-300 ease-in-out shadow-md hover:bg-dark-slate">Editar Perfil</button>} lockScroll={true}
+                        position="top center" closeOnDocumentClick={false} modal={true} overlayStyle={{ background: 'rgba(0,0,0,0.5)' }}
+                        contentStyle={{ maxHeight: '95%', overflow: 'auto' }}>
+                        {close => <UpdateUserForm user={user} close={close} />}
+                    </Popup>
+                </div>
+
+                <div className="flex grow-1 text-center flex-col items-center gap-24">
+                    <div className="bg-bright-gary p-24 rounded-lg shadow-lg w-full text-left text-[1rem]">
+                        <h3 className="mb-16 text-dark-slate text-[1.2rem]">Nombre:</h3>
+                        <p className="my-8 text-dark-gray">{user.name}</p>
+                        <h3 className="mb-16 text-dark-slate text-[1.2rem]">Email:</h3>
+                        <p className="my-8 text-dark-gray">{user.email}</p>
+                        <h3 className="mb-16 text-dark-slate text-[1.2rem]">Edad:</h3>
+                        <p className="my-8 text-dark-gray">{user.age}</p>
+                        <h3 className="mb-16 text-dark-slate text-[1.2rem]">Contacto</h3>
+                        <p className="my-8 text-dark-gray">{user.telephone}</p>
                     </div>
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
     )
 };

@@ -1,5 +1,3 @@
-import { MdDelete } from "react-icons/md";
-import { useAuth } from "../context/AuthContext";
 import "./AdminDeleteUser.css";
 
 export default function UserCard({usr}) {
